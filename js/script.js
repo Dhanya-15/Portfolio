@@ -13,19 +13,22 @@ let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
 
 window.onscroll = () => {
-  sections.forEach((sec) => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute("id");
+  let top = window.scrollY + 160; // adjust this number to match your header height + a small buffer
+  let currentId = "";
 
-    if (top >= offset && top < offset + height) {
-      navLinks.forEach((links) => {
-        links.classList.remove("active");
-        document
-          .querySelector("header nav a[href*=" + id + "]")
-          .classList.add("active");
-      });
+  sections.forEach((sec) => {
+    let sectionTop = sec.offsetTop;
+    let sectionHeight = sec.offsetHeight;
+
+    if (top >= sectionTop && top < sectionTop + sectionHeight) {
+      currentId = sec.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + currentId) {
+      link.classList.add("active");
     }
   });
 
@@ -56,7 +59,7 @@ ScrollReveal().reveal(".home-content p, .about-content", { origin: "right" });
 // typed js
 
 const typed = new Typed('.multiple-text', {
-  strings: ['An MCA Student', 'A Tech Enthusiast', 'Open to Opportunities'],
+  strings: ['I am a Software Developer', 'I Craft Modern Tech Solutions', 'I Build Ideas Into Reality'],
   typeSpeed: 100,
   backSpeed: 100,
   backDelay: 1000,
