@@ -57,6 +57,15 @@ section {
   cursor: default;
 }
 
+.logo img {
+  height: 42px;
+  width: 42px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--main-color, #6c5ce7);
+  display: block;
+}
+
 .navbar a {
   font-size: 1.7rem;
   color: var(--text-color);
